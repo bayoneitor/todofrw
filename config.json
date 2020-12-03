@@ -1,0 +1,16 @@
+{
+  "dbconf_dev": {
+    "driver": "mysql",
+    "dbhost": "localhost",
+    "dbname": "DB_prouf1",
+    "dbuser": "prouf1",
+    "dbpass": "linuxlinux"
+  },
+  "dbconf_pro": {
+    "driver": "mysql",
+    "dbhost": "bada.cesnuria.com",
+    "dbname": "bada_prouf1",
+    "dbuser": "",
+    "dbpass": ""
+  }
+}

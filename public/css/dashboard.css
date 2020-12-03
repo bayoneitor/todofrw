@@ -1,0 +1,59 @@
+#add {
+  background-color: #454d55;
+  display: inline-block;
+  float: right;
+  padding: 10px 25px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+}
+#add:hover {
+  background-color: #33393f;
+}
+#table td a {
+  margin-right: 15px;
+}
+#table td a svg {
+  width: 20px;
+  fill: white;
+}
+#table td a svg#edit:hover {
+  fill: rgb(183, 255, 169);
+}
+#table td a svg#remove:hover {
+  fill: rgb(255, 169, 169);
+}
+#formulario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 600px;
+  margin: 50px auto;
+  height: 400px;
+  background-color: #454d55;
+
+  border-radius: 20px;
+}
+#formulario form {
+  display: flex;
+  flex-direction: column;
+}
+#formulario input,
+#formulario a {
+  width: 300px;
+  margin: 20px 20px;
+  padding: 3px 5px;
+}
+#formulario h1 {
+  color: white;
+  font-weight: BOLD;
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+}
