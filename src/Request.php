@@ -2,63 +2,39 @@
 
 namespace App;
 
-use App\Session;
-
 class Request
 {
-    private string $controller;
-    private string $action;
-    // http method
-    private string $method;
-    private array $params;
+    private  $controller;
+    private  $action;
+    private $method;
+    private  $params;
 
     protected $arrURI;
 
     function __construct()
     {
         $requestString = \htmlentities($_SERVER['REQUEST_URI']);
+        //adaptar el sistema root a domini o carpeta
+        $reqStr = $this->get_diff($requestString, ROOT);
         //extract URI
-        //Cuando lo pase a web hay que eliminar los primeros parametros con el substring/
-        $this->arrURI = explode('/', $requestString);
-        array_shift($this->arrURI);
+        $this->arrURI = explode('/', $reqStr);
+        #var_dump($this->arrURI);
+        #die;
         $this->extractURI();
     }
 
-    private function adaptFolder()
+    private function get_diff($a, $b)
     {
-        $base = explode('/', BASE);
-        $arr = null;
-        foreach ($base as $item) {
-            if ($item != "") {
-                $arr[] = $item;
-            }
-        }
-        if ($arr != null) {
-            $imp = null;
-            foreach ($this->arrURI as $item) {
-                foreach ($arr as $pin) {
-                    if ($item != $pin) {
-                        $imp[] = $item;
-                    }
-                }
-            }
-        } else {
-            $imp = $this->arrURI;
-        }
-        if ($imp == null) {
-            $imp[] = "";
-        }
-        //$imp es arrayURI mejorado
-        return $imp;
+        $c = substr($a, strlen($b));
+        return $c;
     }
 
     private function extractURI(): void
     {
-        $this->arrURI = $this->adaptFolder();
-
         $length = count($this->arrURI);
+        //estudi de casos possibles
         switch ($length) {
-            case 1: //Only controller
+            case 1: //only controller
                 if ($this->arrURI[0] == "") {
                     $this->setController('index');
                 } else {
@@ -74,11 +50,9 @@ class Request
                     $this->setAction($this->arrURI[1]);
                 }
                 break;
-
-            default: // controller & action & params
+            default: // cont. & act & params
                 $this->setController($this->arrURI[0]);
                 $this->setAction($this->arrURI[1]);
-                //seleccionar params
                 $this->Params();
                 break;
         }
@@ -90,7 +64,7 @@ class Request
         if ($this->arrURI != null) {
             $arr_length = count($this->arrURI);
             if ($arr_length > 2) {
-                //Quitamos controlador y accion
+                //quitar contr, y accion
                 array_shift($this->arrURI);
                 array_shift($this->arrURI);
                 $arr_length = count($this->arrURI);
@@ -108,43 +82,37 @@ class Request
             }
         }
     }
+
     public function getController()
     {
         return $this->controller;
     }
-
     public function setController($controller)
     {
         $this->controller = $controller;
-    }
-
-    public function getParams()
-    {
-        return $this->params;
-    }
-
-    public function setParams($array)
-    {
-        $this->params = $array;
-    }
-
-
-    public function getMethod()
-    {
-        return $this->method;
-    }
-
-    public function setMethod($method)
-    {
-        $this->method = $method;
     }
     public function getAction()
     {
         return $this->action;
     }
-
     public function setAction($action)
     {
         $this->action = $action;
+    }
+    public function getMethod()
+    {
+        return $this->method;
+    }
+    public function setMethod($method)
+    {
+        $this->method = $method;
+    }
+    public function getParams()
+    {
+        return $this->params;
+    }
+    public function setParams($array)
+    {
+        $this->params = $array;
     }
 }
