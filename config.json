@@ -1,16 +1,20 @@
 {
-  "dbconf_dev": {
+  "conf_dev": {
     "driver": "mysql",
     "dbhost": "localhost",
     "dbname": "DB_prouf1",
     "dbuser": "prouf1",
-    "dbpass": "linuxlinux"
+    "dbpass": "linuxlinux",
+    "web": "/",
+    "root": "/"
   },
-  "dbconf_pro": {
+  "conf_pro": {
     "driver": "mysql",
     "dbhost": "bada.cesnuria.com",
     "dbname": "bada_prouf1",
     "dbuser": "",
-    "dbpass": ""
+    "dbpass": "",
+    "web": "/m7/todofrw/",
+    "root": "/m7/todofrw/"
   }
 }

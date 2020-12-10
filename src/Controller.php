@@ -5,7 +5,6 @@ namespace App;
 use App\View;
 use App\Model;
 use App\DB;
-use App\Session;
 
 abstract class Controller implements View, Model
 {
