@@ -2,7 +2,7 @@
 include 'templates/header.tpl.php';
 ?>
 
-<form class="form-signin" action="<?= $web ?>register/submit" method="post">
+<form class="form-signin" action="<?= $web ?>user/regaction" method="post">
     <h1 class="h3 mb-3 font-weight-normal">Registrarse</h1>
     <label for="inputUser" class="sr-only">Usuario</label>
     <input type="text" id="inputUser" name="inputUser" class="form-control" style="border-bottom-left-radius:0px;border-bottom-right-radius:0px;" placeholder="Usuario" required autofocus>

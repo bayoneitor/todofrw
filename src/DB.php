@@ -8,7 +8,7 @@ use PDOException;
 class DB extends \PDO
 {
     static $instance;
-    protected array $config;
+    protected $config;
 
     static function singleton()
     {
@@ -22,7 +22,7 @@ class DB extends \PDO
     {
         $config = $this->loadConf();
         //Determinar entorno
-        $strdbconf = 'dbconf_' . $this->env();
+        $strdbconf = 'conf_' . $this->env();
         $dbconf = (array) $config->$strdbconf;
 
         $dsn = $dbconf['driver'] . ':host=' . $dbconf['dbhost'] . ';dbname=' . $dbconf['dbname'];
